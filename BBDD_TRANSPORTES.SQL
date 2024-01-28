@@ -18,26 +18,25 @@ create table Camionero(
     Peso float unsigned ,
     primary key(DNI)
 );
-create table conducir(
-    idconducir int unsigned auto_increment,
-    FechaConduccion date,
-    codCamion int unsigned not null,
-    codCamionero int unsigned not null,
-    primary Key(idConducir),
-    foreign key(codCamion) references camon(idcamion),
-    foreign key(codCamionero) references camionero(dni)
-);
 create table camion(
     idcamion int unsigned,
     modelo varchar(50) not null,
     tipo varchar(50) not null,
     matricula varchar(30),
     potencia varchar(30),
-    Primary key(idcamion),
-
+    Primary key(idcamion)
 );
-create table paquetes(
-    idProvincia int unsigned,
+create table conducir(
+    idconducir int unsigned auto_increment,
+    FechaConduccion date,
+    codCamion int unsigned not null,
+    codCamionero int unsigned not null,
+    primary Key(idConducir),
+    foreign key(codCamion) references camion(idcamion),
+    foreign key(codCamionero) references camionero(dni)
+);
+create table provincia(
+    idprovincia int unsigned,
     nombre varchar(50) not null,
-    Primary key(idProvincia),
+    Primary key(idprovincia)
 );
