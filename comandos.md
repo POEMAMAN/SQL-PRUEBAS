@@ -17,4 +17,13 @@ select count(*) from jugadores where dominancia="diestro"; **ver cuantos element
 select count(*) as numDi from jugadores where dominancia="diestro"; **se le puede poner un alias**
  select dominancia, count(*) as numJug from jugadores group by dominancia; **el group by sirve para ver agrupaciones por campos de golpe**
 select dominancia, count(*) as numJug from jugadores group by dominancia having numJug>1; **el having me sirve para hacer filtro adicionales**
+**en la practica meter al menos 15 o 20 datos por tabla**   
+select distinct(nacionalidad) from jugadores; **el distinc sirve para que no repita campos**
+select count(altura) from jugadores; **si pone en los parentesesis el dato, solo te pone los que etnga dato**
+select max(salario) as salarioMasAlto from jugadores; **filtro maximo**
+select nombre from jugadores where salario=(select min(salario) as salarioMasBajo from jugadores); **ejemplo de combinacion de queries**
+ select sum(salario) as TotalAPagar from jugadores; **formula de suma**
+ select avg(salario) as TotalAPagar from jugadores; **formula de media: average**
+ select sum(salario) / count(salario) as MediaSueldo from jugadores; **y se pueden combiar y hacer operacione matecicas simple**
+ select nacionalidad, avg(salario) as TotalAPagarrrrr from jugadores group by nacionalidad;
 
