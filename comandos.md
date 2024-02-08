@@ -40,7 +40,7 @@ select concat(nombre, "juega de", posición) from jugadores; **se puede maquear 
    select ceiling(datediff(now(), "1978/11/02")/365) as numañosvida2024;
     insert into estadios(idestadio, nombre, codequipo) values (1003, "el nido", 200),(2056, "el colchon", 300); **insereto estadios**
     select estadios.nombre as EST, equipos.nombre as EQUIP from equipos JOIN estadios ON idequipo=codequipo; **combina datos de las dos tabalas con el comando join, y tras el on, iguyala la foranea con la primary**
-
+![alt text](image.png)
     <!-- --falta poner aqui la busqueda a tres, no me dio tiempo a copiar-- -->
 
 
