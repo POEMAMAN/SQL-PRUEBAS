@@ -45,13 +45,13 @@ create table fichar(
     foreign key(codjugador) references Jugadores(idjugador)
 );
  
-create table estadios(
-    idEstadio int unsigned,
-    nombre varchar(50) not null,
-    cubierto set("si","no"),
-    ciudad varchar(30) default "Valencia",
-    TipoTerreno enum("hierba", "tierra", "hierba natural"),
-    Codequipo int unsigned not null,
-    Primary key(idestadio),
-    foreign key(codequipo) references Equipos(idequipo)
-);
+    create table estadios(
+        idEstadio int unsigned,
+        nombre varchar(50) not null,
+        cubierto set("si","no"),
+        ciudad varchar(30) default "Valencia",
+        TipoTerreno enum("hierba", "tierra", "hierba natural"),
+        Codequipo int unsigned not null,
+        Primary key(idestadio),
+        foreign key(codequipo) references Equipos(idequipo)
+    );
