@@ -26,4 +26,24 @@ select nombre from jugadores where salario=(select min(salario) as salarioMasBaj
  select avg(salario) as TotalAPagar from jugadores; **formula de media: average**
  select sum(salario) / count(salario) as MediaSueldo from jugadores; **y se pueden combiar y hacer operacione matecicas simple**
  select nacionalidad, avg(salario) as TotalAPagarrrrr from jugadores group by nacionalidad;
+select nombre, salario *1.1 as posibleSubida from jugadores; **columna calcula, una creada a traves de una columna de la tabla, solo es una visualizacion, no existe en la tabla fisica**
+update jugadores set salario=salario*1,1; **tb se pueden usar las formulas en la update**
+<> operador distinto, ^ operador potencia...se pueden usar todos los operadores nmormales
+select * from jugadores where nombre like "M%";   **expresion regular con el like, el % es le simbolo de 1 o mas caracteres**
+select * from jugadores where nombre like "J___"; **cada _ es un caracter adicional**
+**hay mas funcionanes matematicas y de fechas**
+select concat(nombre, "juega de", posición) from jugadores; **se puede maquear la salidad con diferentes metodos**
+ select dayname("1978/11/02"); **sacar dia de nacimiento**
+ select nombre, dayname(fechanac) as dia, fechanac from jugadores; **ejemplo busqueda**
+  select datediff(now(), "1978/11/02") as numdiavida;
+  select datediff(now(), "1978/11/02")/365 as numañosvida;
+   select ceiling(datediff(now(), "1978/11/02")/365) as numañosvida2024;
+    insert into estadios(idestadio, nombre, codequipo) values (1003, "el nido", 200),(2056, "el colchon", 300); **insereto estadios**
+    select estadios.nombre as EST, equipos.nombre as EQUIP from equipos JOIN estadios ON idequipo=codequipo; **combina datos de las dos tabalas con el comando join, y tras el on, iguyala la foranea con la primary**
+
+    <!-- --falta poner aqui la busqueda a tres, no me dio tiempo a copiar-- -->
+
+
+
+
 
