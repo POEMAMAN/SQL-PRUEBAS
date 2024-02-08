@@ -20,23 +20,37 @@ insert into equipos values (100, "los osos"),(200, "las aguilas"),(300, "los gat
 select nombre, salario, posición from jugadores; **seleccion de datos de todos los jugadores, los campos que quiero**
 
 select nombre, salario, posición from jugadores where nacionalidad="españa"; **lo mismo con condiciones, filtrado horizontal**
+
 select * from jugadores order by salario; **filtramos la vista con un filtro, y sale predeterminado ascendetde**
+
 select * from jugadores order by salario desc; **el desc s de descendente**
+
 select * from jugadores order by salario desc, nombre; **pongo un segundo filtro**
+
 select count(*) from jugadores where dominancia="diestro"; **ver cuantos elementos cumplenla condicion**
+
 select count(*) as numDi from jugadores where dominancia="diestro"; **se le puede poner un alias**
+
  select dominancia, count(*) as numJug from jugadores group by dominancia; **el group by sirve para ver agrupaciones por campos de golpe**
+
 select dominancia, count(*) as numJug from jugadores group by dominancia having numJug>1; **el having me sirve para hacer filtro adicionales**
+
 **en la practica meter al menos 15 o 20 datos por tabla**   
+
 select distinct(nacionalidad) from jugadores; **el distinc sirve para que no repita campos**
+
 select count(altura) from jugadores; **si pone en los parentesesis el dato, solo te pone los que etnga dato**
+
 select max(salario) as salarioMasAlto from jugadores; **filtro maximo**
+
 select nombre from jugadores where salario=(select min(salario) as salarioMasBajo from jugadores); **ejemplo de combinacion de queries**
  select sum(salario) as TotalAPagar from jugadores; **formula de suma**
+
  select avg(salario) as TotalAPagar from jugadores; **formula de media: average**
+
  select sum(salario) / count(salario) as MediaSueldo from jugadores; **y se pueden combiar y hacer operacione matecicas simple**
  select nacionalidad, avg(salario) as TotalAPagarrrrr from jugadores group by nacionalidad;
- 
+
 select nombre, salario *1.1 as posibleSubida from jugadores; **columna calcula, una creada a traves de una columna de la tabla, solo es una visualizacion, no existe en la tabla fisica**
 
 update jugadores set salario=salario*1,1; **tb se pueden usar las formulas en la update**
