@@ -10,3 +10,11 @@ update jugadores set posición="delantero" where posición is null; **    asi se
 insert into equipos values (100, "los osos"),(200, "las aguilas"),(300, "los gatos") **inserto varios equipos a la vez**
 select nombre, salario, posición from jugadores; **seleccion de datos de todos los jugadores, los campos que quiero**
 select nombre, salario, posición from jugadores where nacionalidad="españa"; **lo mismo con condiciones, filtrado horizontal**
+select * from jugadores order by salario; **filtramos la vista con un filtro, y sale predeterminado ascendetde**
+select * from jugadores order by salario desc; **el desc s de descendente**
+select * from jugadores order by salario desc, nombre; **pongo un segundo filtro**
+select count(*) from jugadores where dominancia="diestro"; **ver cuantos elementos cumplenla condicion**
+select count(*) as numDi from jugadores where dominancia="diestro"; **se le puede poner un alias**
+ select dominancia, count(*) as numJug from jugadores group by dominancia; **el group by sirve para ver agrupaciones por campos de golpe**
+select dominancia, count(*) as numJug from jugadores group by dominancia having numJug>1; **el having me sirve para hacer filtro adicionales**
+
