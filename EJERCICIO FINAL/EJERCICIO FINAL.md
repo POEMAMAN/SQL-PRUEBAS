@@ -67,7 +67,94 @@ inserción (por si no se ha declarado claves autoincrementales).
 
 15. ¿Qué camioneros residen en Madrid con un sueldo superior a 3000? (ajustar provincia
 y sueldo)
-select nombre, where salario > 3000 where PoblacionResidencia = 28;
+select nombre from camionero where salario > 3000 and PoblacionResidencia = 28);
+select dominancia, count(*) as numJug from jugadores group by dominancia having numJug>1;
+
+
+16. ¿Cuántos paquetes no tienen descripción y van a Pontevedra? (ajustar provincia)
+**select count(*) from paquetes where CodProvincia=34;**
+![alt text](image-19.png)
+
+17. Dar de alta un nuevo empleado con el sueldo 100 € superior, a la parte entera del
+sueldo medio de los camioneros que ya existen en la empresa.
+**select avg(salario) as TotalAPagar from camionero;**
+**insert into CAMIONERO (DNI,Nombre,Telefono,Salario,PoblacionResidencia,Peso) values (22774593, "Juan Martin Lopez", 606778012, 63537.93, 15, 92);**
+![alt text](image-20.png)
+
+18. ¿De dónde son los empleados de mi plantilla? ¿Cuántos hay de cada una de las
+poblaciones?
+**select PoblacionResidencia, count(*) as Empleados from camionero group by PoblacionResidencia;**
+![alt text](image-21.png)
+
+19. Simular una posible bajada de sueldo de un 10%, que será enviada a los trabajadores,
+anunciándoles que será revertida con el final de la crisis. Esperaremos a la respuesta
+de aceptación para realizar la bajada real, si es que llega a producirse.
+**select nombre, salario *0.9 as posibleBajada from camionero;**
+![alt text](image-22.png)
+
+20. Obtener un listado de las provincias registradas.
+**select nombre, idprovincia from provincia;**
+![alt text](image-23.png)
+
+21. Generar, finalmente una bajada de sueldo del 5% sólo a los 6 camioneros de mayor
+sueldo
+**select nombre, salario from camionero order by salario desc;**
+**update camionero set salario=salario*0.9 where salario=84950;**
+![alt text](image-25.png)
+
+22. ¿Cuál es el sueldo medio de los camioneros de la empresa?
+**select avg(salario) as SalarioMedio from camionero;** 
+![alt text](image-26.png)
+
+23. ¿Qué potencia media tienen los camiones de la empresa?
+**select avg(potencia) as PotenciaMedia from camion;**
+![alt text](image-27.png)
+
+24. Número de viajes entre dos fechas concretas (en Navidades, en final de verano, …)
+**SELECT count(*) FROM conducir WHERE FechaConduccion BETWEEN "2020-03-12" AND "2020-03-18";**
+![alt text](image-28.png)
+
+25. Número de viajes de un camionero en particular en un año.
+**SELECT count(*) FROM conducir where codcamionero=27323032;**
+![alt text](image-29.png)
+
+26. ¿Cuántos paquetes se dirigen a Albacete?
+**SELECT count(*) FROM paquetes where CodProvincia=2;**
+![alt text](image-30.png)
+
+27. ¿Cuál es la provincia registrada que recibe menos paquetes?
+**select codprovincia, count(idpaquete) as paquetesContados from paquetes group by codprovincia order by paquetesContados;**
+![alt text](image-31.png)
+
+28. ¿Cuántos camioneros residen en Barcelona, y podrían pedir no trabajar el día del
+Carmen?
+**select count(*) from camionero where PoblacionResidencia="barcelona";**
+![alt text](image-32.png)
+
+29. Sabiendo el nombre de una provincia, ¿cuántos paquetes han sido enviados a ella?
+
+
+
+30. Obtener un listado de los códigos de todos los paquetes que tiene como destino
+Albacete (o cualquier otra provincia)
+
+
+31. ¿Qué camión condujo Francisco JB el día 21/04/2018? (ajustar nombre y fecha a los
+datos introducidos)
+
+
+32. Obtener cuántos paquetes ha distribuido cada camionero de la plantilla (obteniendo
+su nombre).
+
+
+33. ¿Cuál es el nombre de los camioneros que han llevado paquetes a Lugo?
+
+
+34. ¿Cuáles son las provincias que todavía no han recibido ningún paquete?
+
+
+
+
 
 
 
