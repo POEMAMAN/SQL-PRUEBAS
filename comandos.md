@@ -9,7 +9,7 @@ drop jugadores; **la elimina**
 
 delete from jugadores where nombre="pepe"; **borrara todos los datos de las filas relacionadas con pepe, por eso es mejor siempre con ID**
 
-update jugadores set dominancia="diestro"; **cambia ese campo de toda la tabl**
+update jugadores set dominancia="diestro"; **cambia ese campo de toda la tabla**
 
 update jugadores set dominancia="diestro" where idjugador="1"; **aqui se pouede usar y, or,....**
 
