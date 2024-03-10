@@ -1,6 +1,7 @@
 1. ¿Cuántos camioneros tengo en plantilla?
 
 **select count(*) from camionero;**
+
 ![¿cuantos camioneros tengo en plantilla? ](image-1.png)
 
 2. ¿Cuál es el salario máximo? ¿Quién lo cobra?
@@ -11,17 +12,20 @@
  3. ¿Cuántos camiones tengo en mi parque?
 
 **select count(*) from camion;**
+
 ![¿Cuántos camiones tengo en mi parque?](image-2.png)
 
 4. ¿De qué modelos son los camiones?
 
 **select tipo, count(*) as numTipo from camion group by tipo;**
+
 ![¿De qué modelos son los camiones?](image-3.png)
 
 5. ¿Cuál es la descripción de todos los paquetes que son enviados a Barcelona (o a cualquier otra provincia dada de alta)?
 
 **select descripcion from paquetes;**
 ![¿cual es la descripcion de los paquetes?](image-4.png)
+
 **select descripcion from paquetes group by provincia;**
 ![descripcion paquetes por provincia](image-5.png)
 
@@ -50,6 +54,7 @@
 incorrecta.
 
  **select max(idpaquete) as ultimoPaquete from paquetes;**
+
  **delete from paquetes where idpaquete=50;**
  ![alt text](image-11.png)
 
@@ -75,7 +80,9 @@ u 8) normales. Se puede utilizar el orden de las claves primarias en lugar del o
 inserción (por si no se ha declarado claves autoincrementales).
 
 **update paquetes set VelocidadEntrega=1 where idpaquete=1;**
+
 **update paquetes set VelocidadEntrega=3 where idpaquete=50;**
+
 **update paquetes set VelocidadEntrega=3 where idpaquete=49;**
 ![alt text](image-18.png)
 
@@ -158,15 +165,62 @@ Carmen?
 ![alt text](image-32.png)
 
 29. Sabiendo el nombre de una provincia, ¿cuántos paquetes han sido enviados a ella?
+mysql> SELECT COUNT(*) AS NumeroPaquetesEnviados
 
+-> FROM Provincia
+
+-> WHERE Nombre = 'Madrid';
+
++------------------------+
+
+| NumeroPaquetesEnviados |
+
++------------------------+
+
+| 1 |
+
++------------------------+
+
+1 row in set (0.00 sec)
 
 
 30. Obtener un listado de los códigos de todos los paquetes que tiene como destino
 Albacete (o cualquier otra provincia)
 
+mysql> SELECT CodigoPaquete
+
+-> FROM Provincia
+
+-> WHERE Nombre = 'Madrid';
+
++---------------+
+
+| CodigoPaquete |
+
++---------------+
+
+| 1 |
+
++---------------+
 
 31. ¿Qué camión condujo Francisco JB el día 21/04/2018? (ajustar nombre y fecha a los
 datos introducidos)
+
+mysql> SELECT Camiones.matricula, Camiones.modelo
+
+-> FROM Viajes
+
+-> JOIN Camiones ON Viajes.matricula = Camiones.matricula
+
+-> JOIN Camioneros ON Camiones.cod_camionero = Camioneros.dni
+
+-> WHERE Camioneros.nombre = 'Francisco JB'
+
+-> AND fechaInicio <= '2023-04-21'
+
+-> AND fechaFin >= '2023-04-21';
+
+Empty set (0.00 sec)
 
 
 32. Obtener cuántos paquetes ha distribuido cada camionero de la plantilla (obteniendo
@@ -175,8 +229,36 @@ su nombre).
 
 33. ¿Cuál es el nombre de los camioneros que han llevado paquetes a Lugo?
 
+mysql> SELECT DISTINCT Camioneros.nombre
+
+-> FROM Camioneros
+
+-> JOIN Paquetes ON Camioneros.dni = Paquetes.cod_camionero
+
+-> JOIN Provincia ON Paquetes.CodigoPaquete = Provincia.CodigoPaquete
+
+-> WHERE Provincia.Nombre = 'Lugo';
+
+Empty set (0.00 sec)
+
 
 34. ¿Cuáles son las provincias que todavía no han recibido ningún paquete?
+
+mysql> SELECT DISTINCT Nombre
+
+-> FROM Provincia
+
+-> WHERE Nombre NOT IN (
+
+-> SELECT DISTINCT Nombre
+
+-> FROM Provincia
+
+-> JOIN Paquetes ON Provincia.CodigoPaquete = Paquetes.CodigoPaquete
+
+-> );
+
+Empty set (0.01 sec)
 
 
 
